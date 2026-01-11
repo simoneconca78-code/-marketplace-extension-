@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketplace Publisher</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>📦 Publisher</h1>
+      <button id="settingsBtn" class="btn-icon" title="Impostazioni">⚙️</button>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="annunci">Annunci</button>
+      <button class="tab-btn" data-tab="log">Log</button>
+      <button class="tab-btn" data-tab="config">Config</button>
+    </div>
+
+    <div id="annunci" class="tab-content active">
+      <div class="section">
+        <label>API Key Airtable:</label>
+        <input type="password" id="apiKey" placeholder="pat_xxxxx" class="input-small">
+        
+        <label>Base ID:</label>
+        <input type="text" id="baseId" placeholder="appxxxxx" class="input-small">
+        
+        <label>Tabella:</label>
+        <input type="text" id="tableName" placeholder="Annunci" class="input-small">
+        
+        <button id="loadAnnunci" class="btn-primary">🔄 Carica Annunci</button>
+      </div>
+
+      <div id="loading" class="loading hidden">Caricamento...</div>
+      <div id="errorMsg" class="error hidden"></div>
+
+      <div id="announcements-list" class="announcements-list">
+      </div>
+    </div>
+
+    <div id="log" class="tab-content">
+      <div class="section">
+        <button id="clearLog" class="btn-secondary">🗑️ Cancella Log</button>
+        <button id="exportLog" class="btn-secondary">💾 Esporta Log</button>
+      </div>
+      <div id="log-list" class="log-list">
+      </div>
+    </div>
+
+    <div id="config" class="tab-content">
+      <div class="section">
+        <h3>Mappatura Categorie</h3>
+        <p class="hint">Aggiungi categorie e campi personalizzati per Subito</p>
+        
+        <div id="categoryMappings" class="category-mappings">
+        </div>
+
+        <button id="addCategory" class="btn-secondary">+ Aggiungi Categoria</button>
+      </div>
+
+      <div class="section">
+        <h3>Impostazioni Globali</h3>
+        <label>
+          <input type="checkbox" id="autoDelay" checked>
+          Ritardo casuale tra compilazioni (2-5 sec)
+        </label>
+        <label>
+          <input type="checkbox" id="enableAI" checked>
+          Abilita mappatura intelligente AI
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div id="notification" class="notification hidden"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
