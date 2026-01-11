@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Marketplace Auto Publisher",
+  "version": "1.0.0",
+  "description": "Pubblica automaticamente annunci da Airtable su Subito, Wallapop, Vinted",
+  "permissions": [
+    "storage",
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.subito.it/*",
+    "https://www.wallapop.com/*",
+    "https://www.vinted.com/*",
+    "https://api.airtable.com/*"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Marketplace Publisher"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.subito.it/*",
+        "https://www.wallapop.com/*",
+        "https://www.vinted.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ]
+}
